@@ -22,11 +22,46 @@ class User extends BaseService
 
     public function getUserByToken($token)
     {
-        $user = $this->_user->selectOne(
+        $user = $this->_user->selectOne([
+            'token' => $token,
+        ]);
+        return $user;
+    }
+
+    public function login($username, $password)
+    {
+        $user = $this->_user->selectOne([
+            'username' => $username
+        ]);
+        if (!$user) {
+            return false;
+        }
+        $passwordMd5 = \App\Models\User::setPassword($username, $password);
+        if ($passwordMd5 != $user['password']) {
+            return false;
+        }
+        $token = \App\Models\User::setToken($username);
+        $this->_user->update(
+            [
+                'id' => $user['id'],
+            ],
             [
                 'token' => $token,
             ]
         );
-        return $user;
+
+        return $token;
+    }
+
+    public function logout($id)
+    {
+        $this->_user->update(
+            [
+                'id' => $id,
+            ],
+            [
+                'token' => ''
+            ]
+        );
     }
 }

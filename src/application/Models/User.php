@@ -19,4 +19,17 @@ class User extends DB
     {
         parent::__construct('gw_user', 'admin');
     }
+
+
+    public static function setPassword($username, $password)
+    {
+        $str = $username . $password . 'PASSWOED';
+        return md5($str);
+    }
+
+    public static function setToken($username)
+    {
+        $str = $username . time() . 'TOKEN';
+        return md5($str);
+    }
 }

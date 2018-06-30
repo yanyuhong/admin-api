@@ -14,6 +14,9 @@ class AuthPlugin extends Yaf_Plugin_Abstract
      */
     public static $noAuth = [
         '/test/getTest' => 1,
+
+        '/user/login' => 1,
+        '/user/logout' => 1,
     ];
 
     public function __construct()
