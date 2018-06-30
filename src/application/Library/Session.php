@@ -52,7 +52,7 @@ class Session
         $user_id = 0;
         $user = [];
 
-        $user_session = ServBox()->User()->getUserByToken(self::$_token);
+        $user_session = ServBox()->UserService()->getUserByToken(self::$_token);
         if($user_session){
             $user_id = $user_session['id'];
             $user = $user_session;

@@ -9,15 +9,16 @@
 namespace App\Service;
 
 use App\Library\Core\BaseService;
+use App\Models\User;
 
-class User extends BaseService
+class UserService extends BaseService
 {
     private $_user;
 
     public function __construct()
     {
         parent::__construct();
-        $this->_user = new \App\Models\User();
+        $this->_user = new User();
     }
 
     public function getUserByToken($token)
@@ -36,11 +37,11 @@ class User extends BaseService
         if (!$user) {
             return false;
         }
-        $passwordMd5 = \App\Models\User::setPassword($username, $password);
+        $passwordMd5 = User::setPassword($username, $password);
         if ($passwordMd5 != $user['password']) {
             return false;
         }
-        $token = \App\Models\User::setToken($username);
+        $token = User::setToken($username);
         $this->_user->update(
             [
                 'id' => $user['id'],

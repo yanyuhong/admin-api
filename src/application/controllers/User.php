@@ -18,7 +18,7 @@ class UserController extends BaseController
         $username = Arr::get($this->post, 'username');
         $password = Arr::get($this->post, 'password');
 
-        $token = ServBox()->User()->login($username, $password);
+        $token = ServBox()->UserService()->login($username, $password);
 
         if (!$token) {
             $this->sendResult([-100, '用户名或密码错误']);
@@ -32,7 +32,7 @@ class UserController extends BaseController
     public function logoutAction()
     {
         $userId = RegBox()->Session()->getUserId();
-        ServBox()->User()->logout($userId);
+        ServBox()->UserService()->logout($userId);
         $this->sendSuccess();
     }
 

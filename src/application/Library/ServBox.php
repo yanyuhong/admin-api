@@ -6,7 +6,8 @@ use System;
 
 /**
  * Class ServBox
- * @method \App\Service\User User()
+ * @method \App\Service\UserService UserService()
+ * @method \App\Service\PageService PageService()
  */
 
 class ServBox
