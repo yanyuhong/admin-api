@@ -1,0 +1,8 @@
+/vendor/
+/.idea/
+/log/
+/src/conf
+/src/public/index.php
+/composer.phar
+/composer.lock
+/environments/local
