@@ -8,6 +8,7 @@ use System;
  * Class ServBox
  * @method \App\Service\UserService UserService()
  * @method \App\Service\PageService PageService()
+ * @method \App\Service\CommonService CommonService()
  */
 
 class ServBox

@@ -6,6 +6,7 @@
  * Date: 2018/6/30
  * Time: 下午4:09
  */
+
 namespace App\Models;
 
 use App\Library\Core\DB;

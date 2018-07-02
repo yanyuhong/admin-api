@@ -9,6 +9,7 @@
 
 use App\Library\Core\BaseController;
 use App\Library\Help\Arr;
+use App\Library\Error;
 
 class UserController extends BaseController
 {
@@ -21,7 +22,7 @@ class UserController extends BaseController
         $token = ServBox()->UserService()->login($username, $password);
 
         if (!$token) {
-            $this->sendResult([-100, '用户名或密码错误']);
+            $this->sendResult(Error::$LOGIN_ERROR);
         }
 
         $this->sendSuccess([
